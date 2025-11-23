@@ -1,0 +1,5 @@
+const MONGO_CONSTANTS = {
+  MAX_POOL_SIZE: 50,
+  TIMEOUT: 5000,
+};
+export default MONGO_CONSTANTS;
