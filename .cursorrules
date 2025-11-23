@@ -1,0 +1,153 @@
+# Ricky V1 API - Cursor Rules
+
+## Project Information
+
+- **Project Name**: ricky-v1-api
+- **Tech Stack**: Node.js 24, JavaScript (ES Modules), Express.js
+- **Package Manager**: pnpm 10.0.0
+- **Code Quality**: ESLint 9.15.0 + Prettier 3.3.3 + Husky + lint-staged
+
+## Code Style & Standards
+
+### JavaScript Style
+
+- Use **ES Modules** syntax (`import/export`) - NO CommonJS (`require/module.exports`)
+- Use modern ES2021+ features
+- Prefer `const` over `let`, never use `var`
+- Use arrow functions for callbacks
+- Use template literals for string interpolation
+- Always use semicolons (enforced by Prettier)
+- Single quotes for strings (enforced by Prettier)
+
+### Code Organization
+
+- **src/**: Main application source code
+- **src/index.js**: Application entry point
+- **src/routes/**: API route definitions
+- **src/controllers/**: Route handlers and business logic
+- **src/middlewares/**: Custom middleware functions
+- **src/services/**: Business logic and external integrations
+- **src/models/**: Data models and database schemas
+- **src/utils/**: Helper functions and utilities
+- **src/config/**: Configuration files
+
+### Naming Conventions
+
+- **Files**: Use kebab-case (e.g., `user-service.js`, `auth-middleware.js`)
+- **Variables & Functions**: Use camelCase (e.g., `getUserById`, `userService`)
+- **Constants**: Use UPPER_SNAKE_CASE (e.g., `API_KEY`, `MAX_RETRIES`)
+- **Classes**: Use PascalCase (e.g., `UserService`, `DatabaseConnection`)
+
+### API Development
+
+- Use Express.js for API routing
+- RESTful API design principles
+- Proper HTTP status codes
+- Consistent error handling
+- Input validation for all endpoints
+- Async/await for asynchronous operations
+
+### Error Handling
+
+```javascript
+// Use try-catch for async operations
+try {
+  const result = await someAsyncOperation();
+  return result;
+} catch (error) {
+  console.error('Error message:', error);
+  throw error; // or handle appropriately
+}
+```
+
+### Code Quality
+
+- Run `pnpm lint` before committing
+- Run `pnpm format` to format code
+- Husky pre-commit hooks will automatically lint and format staged files
+- Fix all ESLint errors and warnings
+- Keep functions small and focused (single responsibility)
+- Add comments for complex logic only
+
+### Import Order
+
+1. Node.js built-in modules
+2. External dependencies
+3. Internal modules (absolute imports)
+4. Relative imports
+
+Example:
+
+```javascript
+import fs from 'fs';
+import path from 'path';
+import express from 'express';
+import { userService } from './services/user-service.js';
+import { validateUser } from './utils/validation.js';
+```
+
+### Environment Variables
+
+- Use `.env` files for configuration
+- Never commit sensitive data
+- Document all required environment variables in `.env.example`
+
+### Testing (when implemented)
+
+- Write unit tests for services and utilities
+- Write integration tests for API endpoints
+- Aim for high test coverage
+- Use descriptive test names
+
+## Commands Reference
+
+- `pnpm install` - Install dependencies
+- `pnpm start` - Start production server
+- `pnpm dev` - Start development server with watch mode
+- `pnpm lint` - Check code for linting errors
+- `pnpm lint:fix` - Fix linting errors automatically
+- `pnpm format` - Format code with Prettier
+- `pnpm format:check` - Check if code is formatted
+
+## Best Practices
+
+1. Always use async/await over callbacks
+2. Handle all promise rejections
+3. Validate and sanitize user inputs
+4. Use meaningful variable and function names
+5. Keep functions pure when possible
+6. Avoid deeply nested code (max 3 levels)
+7. Document public APIs with JSDoc comments
+8. Use destructuring for cleaner code
+9. Prefer immutability (avoid mutations)
+10. Log errors with context
+
+## Security
+
+- Sanitize all user inputs
+- Use environment variables for secrets
+- Implement rate limiting
+- Use security headers
+- Keep dependencies updated
+- Follow OWASP guidelines
+
+## Performance
+
+- Use streaming for large data
+- Implement caching where appropriate
+- Optimize database queries
+- Monitor memory usage
+- Use connection pooling
+
+## Git Workflow
+
+- Commit messages should be clear and descriptive
+- Husky will run lint-staged on pre-commit
+- All code must pass linting before commit
+- Keep commits atomic and focused
+
+## Dependencies Version Policy
+
+- All versions are fixed (no ^ or ~ prefixes)
+- Update dependencies consciously and test thoroughly
+- Document breaking changes when updating

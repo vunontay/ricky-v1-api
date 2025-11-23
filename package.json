@@ -1,0 +1,52 @@
+{
+  "name": "ricky-v1-api",
+  "version": "1.0.0",
+  "description": "Ricky V1 API - Node.js API project",
+  "main": "server.js",
+  "type": "module",
+  "engines": {
+    "node": "24.6.0",
+    "pnpm": "10.19.0"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "prepare": "husky"
+  },
+  "keywords": [
+    "api",
+    "nodejs",
+    "express"
+  ],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@eslint/js": "9.15.0",
+    "compression": "^1.8.1",
+    "eslint": "9.15.0",
+    "eslint-config-prettier": "9.1.0",
+    "eslint-plugin-prettier": "5.2.1",
+    "globals": "15.12.0",
+    "helmet": "^8.1.0",
+    "husky": "9.1.7",
+    "lint-staged": "15.2.10",
+    "morgan": "^1.10.1",
+    "prettier": "3.3.3"
+  },
+  "dependencies": {
+    "express": "4.21.1"
+  },
+  "lint-staged": {
+    "*.js": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{json,md}": [
+      "prettier --write"
+    ]
+  }
+}
